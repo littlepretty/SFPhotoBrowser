@@ -13,7 +13,10 @@
 #define kEnableCache YES
 #define kDismissSFPhotoesBrowser @"kDismissSFPhotoesBrowser"
 #define kAnimationDuration 0.4
+
+#ifndef ccp
 #define ccp(X,Y) CGPointMake((X),(Y))
+#endif
 
 
 typedef void (^ CompletionHandler )(void);
@@ -49,7 +52,7 @@ typedef void (^ CompletionHandler )(void);
         [iv addGestureRecognizer:g1];
         
         iv.image = _thumbImage;
-
+        
         
         [self addSubview:iv];
         _iv = iv;
@@ -90,7 +93,7 @@ typedef void (^ CompletionHandler )(void);
         [self zoomToRect:zoomRect animated:YES];
     }
     
- 
+    
     
 }
 
@@ -125,8 +128,8 @@ static inline NSString *  md5(NSString * str){
 
 
 -(void)showLoading{
-   [MBProgressHUD hideHUDForView:self animated:NO];
-   [MBProgressHUD showHUDAddedTo:self animated:YES];
+    [MBProgressHUD hideHUDForView:self animated:NO];
+    [MBProgressHUD showHUDAddedTo:self animated:YES];
 }
 
 -(void)hideLoading{
@@ -141,7 +144,7 @@ static inline NSString *  md5(NSString * str){
     self.zoomScale = 1;
 }
 -(void)load{
-
+    
     if ([self.photoURL hasPrefix:@"http"] || [self.photoURL hasPrefix:@"https"]) {
         NSString *cacheFile = [self cacheFile];
         if ([[NSFileManager defaultManager] fileExistsAtPath:cacheFile]) {
@@ -156,14 +159,14 @@ static inline NSString *  md5(NSString * str){
                     [UIImageJPEGRepresentation(image, 0.8) writeToFile:cacheFile atomically:YES];
                 }
                 
-             
+                
                 [self hideLoading];
                 self.iv.image = image;
                 self.imageLoaded = YES;
                 
             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                 [self hideLoading];
-               
+                
             }];
         }
         
@@ -174,7 +177,7 @@ static inline NSString *  md5(NSString * str){
         self.iv.image = image;
         self.imageLoaded = YES;
     }
-
+    
     
 }
 
@@ -209,15 +212,13 @@ static inline NSString *  md5(NSString * str){
 @implementation SFPhotoBrowser
 
 -(instancetype)initWithIndex:(int)index allPhotoURLs:(NSArray *)allURLs allThumbImageViews:(NSArray *)allThumbImageViews{
-   
+    
     if (self = [super init]) {
         self.wantsFullScreenLayout = YES;
-        self.originalStatusBarHidden = [UIApplication sharedApplication].statusBarHidden;
-       
         _allPhotoURLs = allURLs;
         _allThumbImageViews = allThumbImageViews;
         _originalIndex = index;
-     
+        
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismiss:) name:kDismissSFPhotoesBrowser object:nil];
         // Custom initialization
@@ -292,22 +293,17 @@ static inline NSString *  md5(NSString * str){
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    
- 
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (_snapshotBg == nil) {
+        
         UIImageView *bgImageView = [[UIImageView alloc] initWithImage:self.snapshot];
-        if (self.originalStatusBarHidden) {
-             bgImageView.frame = self.view.bounds;
-            
-        }else{
-            bgImageView.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height-20);
-        }
-       
+        
+        bgImageView.frame = CGRectMake(0, self.view.bounds.size.height - _snapshot.size.height, _snapshot.size.width, _snapshot.size.height);
+        
+        
         [self.view addSubview:bgImageView];
         _snapshotBg = bgImageView;
         
@@ -318,16 +314,10 @@ static inline NSString *  md5(NSString * str){
         UIImageView *thisThumbView = _allThumbImageViews[_originalIndex];
         UIImageView *av  = [[UIImageView alloc] initWithImage:thisThumbView.image];
         av.contentMode = thisThumbView.contentMode;
-        
-            
+        av.clipsToBounds = thisThumbView.clipsToBounds;
         
         av.frame = [parentView convertRect:thisThumbView.bounds fromView:thisThumbView];
-       
-        
-        if (!_originalStatusBarHidden) {
-            av.center = ccp(av.center.x, av.center.y + 20);
-        }
-        
+        av.center = ccp(av.center.x, av.center.y + (self.view.bounds.size.height - _snapshot.size.height ));
         
         [self.view addSubview:av];
         
@@ -335,9 +325,9 @@ static inline NSString *  md5(NSString * str){
         CGRect thisFrame = CGRectMake((self.view.bounds.size.width - thisSize.width) / 2, (self.view.bounds.size.height - thisSize.height) / 2, thisSize.width,thisSize.height);
         CGRect targetFrame = thisFrame;
         
-
         
-       
+        
+        
         [UIView animateWithDuration:kAnimationDuration animations:^{
             av.frame = targetFrame;
             _snapshotBg.alpha = 0;
@@ -365,7 +355,7 @@ static inline NSString *  md5(NSString * str){
     if (imageRatio > viewRatio) {
         return CGSizeMake(self.view.bounds.size.width, self.view.bounds.size.width * image.size.height / image.size.width);
     }else if(imageRatio < viewRatio){
-         return CGSizeMake(self.view.bounds.size.height * image.size.width / image.size.height, self.view.bounds.size.height);
+        return CGSizeMake(self.view.bounds.size.height * image.size.width / image.size.height, self.view.bounds.size.height);
     }else{
         return self.view.bounds.size;
     }
@@ -375,7 +365,7 @@ static inline NSString *  md5(NSString * str){
 
 
 -(void)dismiss:(NSNotification *)noti{
-  
+    
     if (self.interfaceOrientation == _originalInterfaceOrientation) {
         [[UIApplication sharedApplication] setStatusBarHidden:self.originalStatusBarHidden withAnimation:UIStatusBarAnimationFade];
         
@@ -396,9 +386,9 @@ static inline NSString *  md5(NSString * str){
         [self.view addSubview:av];
         
         CGRect targetFrame = [self.presentingViewController.view convertRect:thumbImageView.bounds fromView:thumbImageView];
-        if (!self.originalStatusBarHidden) {
-            targetFrame = CGRectMake(targetFrame.origin.x, targetFrame.origin.y+20 , targetFrame.size.width, targetFrame.size.height);
-        }
+        
+        targetFrame = CGRectMake(targetFrame.origin.x, targetFrame.origin.y + (self.view.bounds.size.height - _snapshot.size.height ) , targetFrame.size.width, targetFrame.size.height);
+        
         
         [UIView animateWithDuration:kAnimationDuration animations:^{
             av.frame = targetFrame;
@@ -418,18 +408,18 @@ static inline NSString *  md5(NSString * str){
         [[UIApplication sharedApplication] setStatusBarHidden:self.originalStatusBarHidden withAnimation:UIStatusBarAnimationFade];
         
         __weak SFPhotoBrowser* this = self;
-
+        
         [this dismissViewControllerAnimated:YES completion:^{
             if (this.onDismissingHandler) {
                 this.onDismissingHandler();
             }
         }];
         
-       
+        
     }
-   
-
-
+    
+    
+    
 }
 
 
@@ -470,7 +460,7 @@ static inline NSString *  md5(NSString * str){
     UIImage *imageCaptureRect = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return imageCaptureRect;
-
+    
 }
 
 
