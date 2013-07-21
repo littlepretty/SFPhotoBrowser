@@ -7,7 +7,7 @@ A single ObjC class which let you browser full-size photos supporting zooming,pa
 ![ScreenShot](https://raw.github.com/JagieChen/SFPhotoBrowser/master/snapshot1.PNG)
 ![ScreenShot](https://raw.github.com/JagieChen/SFPhotoBrowser/master/snapshot2.PNG)
 
-By Jagie(chen_cwf@163.com,http://weibo.com/jagie)
+
 
 
 Features
