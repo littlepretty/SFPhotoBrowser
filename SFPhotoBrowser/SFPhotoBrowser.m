@@ -474,7 +474,7 @@ static inline NSString *  md5(NSString * str){
 }
 
 
-+(void)animateShowBigPhotoesFromThumbImageViews:(NSArray *)thumbImageViews fromViewController:(UIViewController *)fromViewController bigPhotoesURL:(NSArray *)bigPhotoesURLS curIndex:(int)index didEndShowing:(void (^)(void))didEndShowing didEndDismissing:(void (^)(void))didEndDismissing{
++(void)animateShowBigPhotosFromThumbImageViews:(NSArray *)thumbImageViews fromViewController:(UIViewController *)fromViewController bigPhotoesURL:(NSArray *)bigPhotoesURLS curIndex:(int)index didEndShowing:(void (^)(void))didEndShowing didEndDismissing:(void (^)(void))didEndDismissing{
     
     UIImage *snapshot = [self snapshot];
     BOOL statusBarHidden = [UIApplication sharedApplication].statusBarHidden;

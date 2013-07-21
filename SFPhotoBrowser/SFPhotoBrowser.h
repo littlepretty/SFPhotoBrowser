@@ -5,7 +5,7 @@
 
 @interface SFPhotoBrowser : UIViewController<UIScrollViewDelegate,UIGestureRecognizerDelegate>
 
-+(void)animateShowBigPhotoesFromThumbImageViews:(NSArray *)thumbImageViews fromViewController:(UIViewController *)fromViewController bigPhotoesURL:(NSArray *)bigPhotoesURLS curIndex:(int)index didEndShowing:(void (^)(void))didEndShowing didEndDismissing:(void (^)(void))didEndShowing;
++(void)animateShowBigPhotosFromThumbImageViews:(NSArray *)thumbImageViews fromViewController:(UIViewController *)fromViewController bigPhotoesURL:(NSArray *)bigPhotoesURLS curIndex:(int)index didEndShowing:(void (^)(void))didEndShowing didEndDismissing:(void (^)(void))didEndShowing;
 
 
 @end

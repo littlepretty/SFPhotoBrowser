@@ -20,7 +20,7 @@
 -(void)onTap:(UIGestureRecognizer *)g{
     UIImageView *iv = (UIImageView *)g.view;
     if (iv.image != nil) {
-        [SFPhotoBrowser animateShowBigPhotoesFromThumbImageViews:self.view.subviews fromViewController:self bigPhotoesURL:self.fullImagesURLs curIndex:iv.tag didEndShowing:^{
+        [SFPhotoBrowser animateShowBigPhotosFromThumbImageViews:self.view.subviews fromViewController:self bigPhotoesURL:self.fullImagesURLs curIndex:iv.tag didEndShowing:^{
             NSLog(@"SFPhotoesBrowser is showing");
             
         } didEndDismissing:^{
