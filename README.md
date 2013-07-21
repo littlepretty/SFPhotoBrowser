@@ -1,7 +1,7 @@
 SFPhotoBrowser
 ============================
 
-A single ObjC class which let you browser full-size photos supporting zooming,paging,and smooth transforming animation between thumbnail imageviews. 
+A single ObjC class which let you browse full-size photos supporting zooming,paging,and smooth transforming animation between thumbnail imageviews.
 
 
 ![ScreenShot](https://raw.github.com/JagieChen/SFPhotoBrowser/master/snapshot1.PNG)
