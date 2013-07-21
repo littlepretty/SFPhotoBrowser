@@ -43,7 +43,7 @@ How to use
 3.
 
 
-    [SFPhotoBrowser animateShowBigPhotoesFromThumbImageViews:self.view.subviews fromViewController:self bigPhotoesURL:self.fullImagesURLs curIndex:iv.tag didEndShowing:^{
+    [SFPhotoBrowser animateShowBigPhotosFromThumbImageViews:self.view.subviews fromViewController:self bigPhotoesURL:self.fullImagesURLs curIndex:iv.tag didEndShowing:^{
             NSLog(@"SFPhotoesBrowser is showing");
             
     } didEndDismissing:^{
