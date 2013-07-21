@@ -303,6 +303,7 @@ static inline NSString *  md5(NSString * str){
         UIImageView *bgImageView = [[UIImageView alloc] initWithImage:self.snapshot];
         if (self.originalStatusBarHidden) {
              bgImageView.frame = self.view.bounds;
+            
         }else{
             bgImageView.frame = CGRectMake(0, 20, self.view.bounds.size.width, self.view.bounds.size.height-20);
         }
@@ -310,22 +311,35 @@ static inline NSString *  md5(NSString * str){
         [self.view addSubview:bgImageView];
         _snapshotBg = bgImageView;
         
+        
+        
         UIView *parentView = self.presentingViewController.view;
         
         UIImageView *thisThumbView = _allThumbImageViews[_originalIndex];
         UIImageView *av  = [[UIImageView alloc] initWithImage:thisThumbView.image];
         av.contentMode = thisThumbView.contentMode;
+        
+            
+        
         av.frame = [parentView convertRect:thisThumbView.bounds fromView:thisThumbView];
+       
+        
         if (!_originalStatusBarHidden) {
-            av.center = ccp(av.center.x, av.center.y + 10);
+            av.center = ccp(av.center.x, av.center.y + 20);
         }
         
         
         [self.view addSubview:av];
         
-        av.contentMode = UIViewContentModeScaleAspectFit;
+        CGSize thisSize = [self getImageAspectFitSize:av.image];
+        CGRect thisFrame = CGRectMake((self.view.bounds.size.width - thisSize.width) / 2, (self.view.bounds.size.height - thisSize.height) / 2, thisSize.width,thisSize.height);
+        CGRect targetFrame = thisFrame;
+        
+
+        
+       
         [UIView animateWithDuration:kAnimationDuration animations:^{
-            av.frame = self.view.bounds;
+            av.frame = targetFrame;
             _snapshotBg.alpha = 0;
             
         }completion:^(BOOL finished) {
