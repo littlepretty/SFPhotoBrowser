@@ -26,7 +26,7 @@ Features
 
 7.simple and friendly API 
 
-8.this class using [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [MBProgressHUD](https://github.com/jdg/MBProgressHUD) but you can easily remove the dependence.
+8.this class using [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [MBProgressHUD](https://github.com/jdg/MBProgressHUD) but you can easily remove the dependency.
 
 
 Shortage
