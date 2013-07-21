@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1834D6FD179B8E4D006E3F77 /* snapshot1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1834D6FB179B8E4D006E3F77 /* snapshot1.PNG */; };
+		1834D6FE179B8E4D006E3F77 /* snapshot2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1834D6FC179B8E4D006E3F77 /* snapshot2.PNG */; };
+		1834D700179B8E63006E3F77 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1834D6FF179B8E63006E3F77 /* README.md */; };
 		18E00FA8179B7A27005251EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E00FA7179B7A27005251EF /* UIKit.framework */; };
 		18E00FAA179B7A27005251EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E00FA9179B7A27005251EF /* Foundation.framework */; };
 		18E00FAC179B7A27005251EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E00FAB179B7A27005251EF /* CoreGraphics.framework */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1834D6FB179B8E4D006E3F77 /* snapshot1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot1.PNG; sourceTree = SOURCE_ROOT; };
+		1834D6FC179B8E4D006E3F77 /* snapshot2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snapshot2.PNG; sourceTree = SOURCE_ROOT; };
+		1834D6FF179B8E63006E3F77 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		18E00FA4179B7A27005251EF /* SFPhotoBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFPhotoBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E00FA7179B7A27005251EF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		18E00FA9179B7A27005251EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +140,9 @@
 		18E00FAE179B7A27005251EF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1834D6FF179B8E63006E3F77 /* README.md */,
+				1834D6FB179B8E4D006E3F77 /* snapshot1.PNG */,
+				1834D6FC179B8E4D006E3F77 /* snapshot2.PNG */,
 				18E00FAF179B7A27005251EF /* SFPhotoBrowser-Info.plist */,
 				18E00FB0179B7A27005251EF /* InfoPlist.strings */,
 				18E00FB3179B7A27005251EF /* main.m */,
@@ -237,6 +246,9 @@
 				18E00FBC179B7A27005251EF /* Default@2x.png in Resources */,
 				18E00FBE179B7A27005251EF /* Default-568h@2x.png in Resources */,
 				18E00FC1179B7A27005251EF /* MainStoryboard.storyboard in Resources */,
+				1834D6FD179B8E4D006E3F77 /* snapshot1.PNG in Resources */,
+				1834D6FE179B8E4D006E3F77 /* snapshot2.PNG in Resources */,
+				1834D700179B8E63006E3F77 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
